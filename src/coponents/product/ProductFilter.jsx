@@ -13,10 +13,10 @@ const ProductFilter = ({ priceRange, setPriceRange, prodCategory, setProdCategor
                 <li><h3 className='font-bold text-lg'>Filter</h3></li>
                 <li>
                     <details open>
-                        <summary>Price Range ₹{priceRange}</summary>
+                        <summary>Price ₹{priceRange} - ₹1000000</summary>
                         <ul>
                             <li>
-                                <input type="range" min={1000} max={200000} value={priceRange} onChange={(e) => setPriceRange(Number(e.target.value))} className="range range-xs text-blue-300 [--range-bg:orange] [--range-thumb:blue] [--range-fill:0]" />
+                                <input type="range" min={1000} max={1000000} value={priceRange} onChange={(e) => setPriceRange(Number(e.target.value))} className="range range-xs text-blue-300 [--range-bg:orange] [--range-thumb:blue] [--range-fill:0]" />
                             </li>
                         </ul>
                     </details>

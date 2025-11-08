@@ -17,10 +17,14 @@ const wishlistSlice = createSlice(
                 }
             },
             removeFromWishlist: (state, action) => {
-                const index = state.findIndex(item => item._id === action.payload);
+                //console.log("Removing from wishlist:", action.payload);
+                //console.log("Current state before removal:",  JSON.parse(JSON.stringify(state)));
+                //const existingItem = state.find( product => product._id === action.payload);
+                
+                const index = state.findIndex(item => item.productId === action.payload);
                 if (index !== -1) {
                     state.splice(index, 1); // ✅ removes item from the array
-                }
+                } 
             },
             clearWishlist : () => {
                 return [];

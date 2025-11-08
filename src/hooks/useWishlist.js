@@ -1,6 +1,6 @@
 import { useDispatch, useSelector } from "react-redux";
 import { addToWishlist, removeFromWishlist } from '../store/wishlistSlice';
-import axios from 'axios';
+import axios from 'axios'; 
 
 const useWishlist = () => {
     const dispatch = useDispatch();
@@ -12,6 +12,18 @@ const useWishlist = () => {
     };
 
     const toggleWishlist = async (product, setToastMsg, setShowToast) => {
+        
+        if(!user || !user.user){
+            if(setToastMsg && setShowToast ){
+                setToastMsg("Please log in to add items to your wishlist");
+                setShowToast(true);
+                setTimeout(() => {
+                    setShowToast(false);
+                }, 3000);
+            }
+            return;
+        }
+
         try{
             if(inWishlist(product._id)){
                 await axios.post(`${import.meta.env.VITE_BASE_URL}/client/api/removefromwishlist`, {productId: product._id, userId: user.user.id});
